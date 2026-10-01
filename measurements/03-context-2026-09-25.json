@@ -1,0 +1,339 @@
+{
+  "region": "ap-southeast-1",
+  "model": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
+  "policy_chars": 39759,
+  "A0_short_prompt": [
+    {
+      "turn": 1,
+      "messages_sent": 2,
+      "inputTokens": 50,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 22
+    },
+    {
+      "turn": 2,
+      "messages_sent": 4,
+      "inputTokens": 88,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 38
+    },
+    {
+      "turn": 3,
+      "messages_sent": 6,
+      "inputTokens": 137,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 35
+    },
+    {
+      "turn": 4,
+      "messages_sent": 8,
+      "inputTokens": 191,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 46
+    },
+    {
+      "turn": 5,
+      "messages_sent": 10,
+      "inputTokens": 253,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 47
+    },
+    {
+      "turn": 6,
+      "messages_sent": 12,
+      "inputTokens": 320,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 40
+    },
+    {
+      "turn": 7,
+      "messages_sent": 14,
+      "inputTokens": 377,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 58
+    },
+    {
+      "turn": 8,
+      "messages_sent": 16,
+      "inputTokens": 445,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 42
+    },
+    {
+      "turn": 9,
+      "messages_sent": 18,
+      "inputTokens": 501,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 34
+    },
+    {
+      "turn": 10,
+      "messages_sent": 20,
+      "inputTokens": 545,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 104
+    }
+  ],
+  "A_full_history": [
+    {
+      "turn": 1,
+      "messages_sent": 2,
+      "inputTokens": 7870,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 34
+    },
+    {
+      "turn": 2,
+      "messages_sent": 4,
+      "inputTokens": 7920,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 34
+    },
+    {
+      "turn": 3,
+      "messages_sent": 6,
+      "inputTokens": 7965,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 38
+    },
+    {
+      "turn": 4,
+      "messages_sent": 8,
+      "inputTokens": 8022,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 33
+    },
+    {
+      "turn": 5,
+      "messages_sent": 10,
+      "inputTokens": 8071,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 34
+    },
+    {
+      "turn": 6,
+      "messages_sent": 12,
+      "inputTokens": 8125,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 37
+    },
+    {
+      "turn": 7,
+      "messages_sent": 14,
+      "inputTokens": 8179,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 32
+    },
+    {
+      "turn": 8,
+      "messages_sent": 16,
+      "inputTokens": 8221,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 29
+    },
+    {
+      "turn": 9,
+      "messages_sent": 18,
+      "inputTokens": 8264,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 31
+    },
+    {
+      "turn": 10,
+      "messages_sent": 20,
+      "inputTokens": 8305,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 71
+    }
+  ],
+  "B_cached_prefix": [
+    {
+      "turn": 1,
+      "messages_sent": 2,
+      "inputTokens": 33,
+      "cacheWrite": 7837,
+      "cacheRead": 0,
+      "outputTokens": 41
+    },
+    {
+      "turn": 2,
+      "messages_sent": 4,
+      "inputTokens": 90,
+      "cacheWrite": 0,
+      "cacheRead": 7837,
+      "outputTokens": 29
+    },
+    {
+      "turn": 3,
+      "messages_sent": 6,
+      "inputTokens": 130,
+      "cacheWrite": 0,
+      "cacheRead": 7837,
+      "outputTokens": 52
+    },
+    {
+      "turn": 4,
+      "messages_sent": 8,
+      "inputTokens": 201,
+      "cacheWrite": 0,
+      "cacheRead": 7837,
+      "outputTokens": 56
+    },
+    {
+      "turn": 5,
+      "messages_sent": 10,
+      "inputTokens": 273,
+      "cacheWrite": 0,
+      "cacheRead": 7837,
+      "outputTokens": 57
+    },
+    {
+      "turn": 6,
+      "messages_sent": 12,
+      "inputTokens": 350,
+      "cacheWrite": 0,
+      "cacheRead": 7837,
+      "outputTokens": 56
+    },
+    {
+      "turn": 7,
+      "messages_sent": 14,
+      "inputTokens": 423,
+      "cacheWrite": 0,
+      "cacheRead": 7837,
+      "outputTokens": 50
+    },
+    {
+      "turn": 8,
+      "messages_sent": 16,
+      "inputTokens": 483,
+      "cacheWrite": 0,
+      "cacheRead": 7837,
+      "outputTokens": 44
+    },
+    {
+      "turn": 9,
+      "messages_sent": 18,
+      "inputTokens": 541,
+      "cacheWrite": 0,
+      "cacheRead": 7837,
+      "outputTokens": 48
+    },
+    {
+      "turn": 10,
+      "messages_sent": 20,
+      "inputTokens": 599,
+      "cacheWrite": 0,
+      "cacheRead": 7837,
+      "outputTokens": 70
+    }
+  ],
+  "C_window_4": [
+    {
+      "turn": 1,
+      "messages_sent": 1,
+      "inputTokens": 7870,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 33
+    },
+    {
+      "turn": 2,
+      "messages_sent": 3,
+      "inputTokens": 7919,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 38
+    },
+    {
+      "turn": 3,
+      "messages_sent": 3,
+      "inputTokens": 7905,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 45
+    },
+    {
+      "turn": 4,
+      "messages_sent": 3,
+      "inputTokens": 7915,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 39
+    },
+    {
+      "turn": 5,
+      "messages_sent": 3,
+      "inputTokens": 7914,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 49
+    },
+    {
+      "turn": 6,
+      "messages_sent": 3,
+      "inputTokens": 7925,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 35
+    },
+    {
+      "turn": 7,
+      "messages_sent": 3,
+      "inputTokens": 7912,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 64
+    },
+    {
+      "turn": 8,
+      "messages_sent": 3,
+      "inputTokens": 7931,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 33
+    },
+    {
+      "turn": 9,
+      "messages_sent": 3,
+      "inputTokens": 7897,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 34
+    },
+    {
+      "turn": 10,
+      "messages_sent": 3,
+      "inputTokens": 7898,
+      "cacheWrite": 0,
+      "cacheRead": 0,
+      "outputTokens": 29
+    }
+  ],
+  "cost_usd": {
+    "A0": 0.002907,
+    "A": 0.080942,
+    "B": 0.019972550000000006,
+    "C": 0.079086
+  }
+}

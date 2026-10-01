@@ -1,0 +1,150 @@
+{
+  "ap-southeast-7": [
+    {
+      "family": "Cross-region",
+      "model": "Amazon Nova Lite",
+      "tpm": 400000,
+      "rpm": 40,
+      "max_out": 5000,
+      "calls_to_tpm": 79.8,
+      "binds_first": "RPM"
+    },
+    {
+      "family": "Cross-region",
+      "model": "Amazon Nova Micro",
+      "tpm": 400000,
+      "rpm": 40,
+      "max_out": 5000,
+      "calls_to_tpm": 79.8,
+      "binds_first": "RPM"
+    },
+    {
+      "family": "Cross-region",
+      "model": "Amazon Nova Pro",
+      "tpm": 2000000,
+      "rpm": 50,
+      "max_out": 5000,
+      "calls_to_tpm": 398.8,
+      "binds_first": "RPM"
+    },
+    {
+      "family": "Global cross-region",
+      "model": "Amazon Nova 2 Lite",
+      "tpm": 8000000,
+      "rpm": 200,
+      "max_out": 64000,
+      "calls_to_tpm": 125.0,
+      "binds_first": "TPM"
+    },
+    {
+      "family": "Global cross-region",
+      "model": "Anthropic Claude Haiku 4.5",
+      "tpm": 5000000,
+      "rpm": 50,
+      "max_out": 64000,
+      "calls_to_tpm": 78.1,
+      "binds_first": "RPM"
+    },
+    {
+      "family": "Global cross-region",
+      "model": "Anthropic Claude Opus 4.6 V1",
+      "tpm": 3000000,
+      "rpm": 25,
+      "max_out": 128000,
+      "calls_to_tpm": 23.4,
+      "binds_first": "TPM"
+    },
+    {
+      "family": "Global cross-region",
+      "model": "Anthropic Claude Sonnet 4.5 V1",
+      "tpm": 5000000,
+      "rpm": 50,
+      "max_out": 64000,
+      "calls_to_tpm": 78.1,
+      "binds_first": "RPM"
+    },
+    {
+      "family": "Global cross-region",
+      "model": "Anthropic Claude Sonnet 4.6",
+      "tpm": 6000000,
+      "rpm": 50,
+      "max_out": 64000,
+      "calls_to_tpm": 93.7,
+      "binds_first": "RPM"
+    }
+  ],
+  "ap-southeast-1": [
+    {
+      "family": "Cross-region",
+      "model": "Amazon Nova Lite",
+      "tpm": 400000,
+      "rpm": 400,
+      "max_out": 5000,
+      "calls_to_tpm": 79.8,
+      "binds_first": "TPM"
+    },
+    {
+      "family": "Cross-region",
+      "model": "Amazon Nova Micro",
+      "tpm": 400000,
+      "rpm": 400,
+      "max_out": 5000,
+      "calls_to_tpm": 79.8,
+      "binds_first": "TPM"
+    },
+    {
+      "family": "Cross-region",
+      "model": "Amazon Nova Pro",
+      "tpm": 2000000,
+      "rpm": 500,
+      "max_out": 5000,
+      "calls_to_tpm": 398.8,
+      "binds_first": "TPM"
+    },
+    {
+      "family": "Global cross-region",
+      "model": "Amazon Nova 2 Lite",
+      "tpm": 8000000,
+      "rpm": 2000,
+      "max_out": 64000,
+      "calls_to_tpm": 125.0,
+      "binds_first": "TPM"
+    },
+    {
+      "family": "Global cross-region",
+      "model": "Anthropic Claude Haiku 4.5",
+      "tpm": 5000000,
+      "rpm": 10000,
+      "max_out": 64000,
+      "calls_to_tpm": 78.1,
+      "binds_first": "TPM"
+    },
+    {
+      "family": "Global cross-region",
+      "model": "Anthropic Claude Opus 4.6 V1",
+      "tpm": 3000000,
+      "rpm": 10000,
+      "max_out": 128000,
+      "calls_to_tpm": 23.4,
+      "binds_first": "TPM"
+    },
+    {
+      "family": "Global cross-region",
+      "model": "Anthropic Claude Sonnet 4.5 V1",
+      "tpm": 5000000,
+      "rpm": 10000,
+      "max_out": 64000,
+      "calls_to_tpm": 78.1,
+      "binds_first": "TPM"
+    },
+    {
+      "family": "Global cross-region",
+      "model": "Anthropic Claude Sonnet 4.6",
+      "tpm": 6000000,
+      "rpm": 10000,
+      "max_out": 64000,
+      "calls_to_tpm": 93.7,
+      "binds_first": "TPM"
+    }
+  ]
+}

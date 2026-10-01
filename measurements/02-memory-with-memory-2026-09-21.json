@@ -1,0 +1,25 @@
+{
+  "region": "ap-southeast-1",
+  "model": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
+  "turns": [
+    {
+      "messages_sent": 1,
+      "from_history": 0,
+      "input_tokens": 44,
+      "user": "Hi, I am Alex. I am flying to Bangkok for AWS Community Day on 3 October.",
+      "model": "I'd be happy to help you with your trip to Bangkok on October 3rd—could you let me know what assistance you need, such as flight booking, seat selection, or baggage information?"
+    },
+    {
+      "messages_sent": 3,
+      "from_history": 2,
+      "input_tokens": 99,
+      "user": "What should I pack for the trip?",
+      "model": "For Bangkok in October, pack light breathable clothing, an umbrella or rain jacket (it's the rainy season), comfortable walking shoes, sunscreen, and any personal medications you may need."
+    },
+    {
+      "user_id": "bob",
+      "messages_sent": 1,
+      "model": "Pack essentials like clothing appropriate for your destination's weather, toiletries, medications, travel documents (passport/ID), phone charger, and any electronics you'll need."
+    }
+  ]
+}

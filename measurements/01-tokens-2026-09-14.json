@@ -1,0 +1,73 @@
+{
+  "region": "ap-southeast-1",
+  "texts": {
+    "hi": "Hi",
+    "en": "Hello, I would like to change my flight to next Tuesday morning. Is there a fee for that?",
+    "de": "Hallo, ich möchte meinen Flug auf nächsten Dienstagmorgen umbuchen. Fällt dafür eine Gebühr an?",
+    "zh": "您好，我想把航班改到下周二早上。这样改需要手续费吗？",
+    "th": "สวัสดีครับ ผมต้องการเปลี่ยนเที่ยวบินเป็นเช้าวันอังคารหน้า มีค่าธรรมเนียมสำหรับการเปลี่ยนไหมครับ"
+  },
+  "chars": {
+    "hi": 2,
+    "en": 89,
+    "de": 95,
+    "zh": 26,
+    "th": 95
+  },
+  "models": {
+    "Claude Haiku 4.5": {
+      "model_id": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "input_tokens": {
+        "hi": 8,
+        "en": 28,
+        "de": 48,
+        "zh": 35,
+        "th": 90
+      }
+    },
+    "Claude Sonnet 4.6": {
+      "model_id": "global.anthropic.claude-sonnet-4-6",
+      "input_tokens": {
+        "hi": 8,
+        "en": 28,
+        "de": 48,
+        "zh": 35,
+        "th": 90
+      }
+    },
+    "Nova Lite": {
+      "model_id": "apac.amazon.nova-lite-v1:0",
+      "input_tokens": {
+        "hi": 1,
+        "en": 21,
+        "de": 24,
+        "zh": 28,
+        "th": 75
+      }
+    },
+    "Nova 2 Lite": {
+      "model_id": "global.amazon.nova-2-lite-v1:0",
+      "input_tokens": {
+        "hi": 47,
+        "en": 67,
+        "de": 70,
+        "zh": 68,
+        "th": 80
+      }
+    }
+  },
+  "count_tokens_us_east_1_haiku45": {
+    "hi": {
+      "count_tokens": 24,
+      "converse_usage": 8
+    },
+    "en": {
+      "count_tokens": 44,
+      "converse_usage": 28
+    },
+    "th": {
+      "count_tokens": 106,
+      "converse_usage": 90
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "region": "ap-southeast-7",
+  "model": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
+  "quota_tpm": 5000000.0,
+  "quota_rpm": 10000.0,
+  "predicted_fit": 78,
+  "workers": 117,
+  "prompt": "Write a 300-word story about a delayed flight from Bangkok to Chiang Mai.",
+  "A_max": {
+    "workers": 117,
+    "max_tokens": 64000,
+    "ok": 76,
+    "errors": {
+      "ThrottlingException": 41
+    },
+    "reserved_in_flight": 7490340,
+    "mean_out": 393.0,
+    "mean_call_s": 5.0,
+    "wall_s": 6.7
+  },
+  "B_right_sized": {
+    "workers": 117,
+    "max_tokens": 600,
+    "ok": 117,
+    "errors": {},
+    "reserved_in_flight": 72540,
+    "mean_out": 395.0,
+    "mean_call_s": 5.1,
+    "wall_s": 7.3
+  },
+  "C_control": {
+    "workers": 19,
+    "max_tokens": 64000,
+    "ok": 19,
+    "errors": {},
+    "reserved_in_flight": 1216380,
+    "mean_out": 393.0,
+    "mean_call_s": 4.9,
+    "wall_s": 5.9
+  },
+  "D_retry_attempts": 1
+}

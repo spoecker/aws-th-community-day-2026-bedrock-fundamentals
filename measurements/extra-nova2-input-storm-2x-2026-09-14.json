@@ -1,0 +1,13 @@
+{
+  "region": "ap-southeast-1",
+  "model": "global.amazon.nova-2-lite-v1:0",
+  "workers": 190,
+  "input_per_call": 90398,
+  "in_flight_nominal": 17176570,
+  "peak_in_flight_calls": 189,
+  "peak_in_flight_tokens": 17085222,
+  "ok": 190,
+  "errors": {},
+  "wall_s": 47.9,
+  "429_texts": []
+}

@@ -1,0 +1,61 @@
+{
+  "region": "ap-southeast-7",
+  "calls": {},
+  "hours": 3.0,
+  "cloudtrail": [
+    {
+      "profile": "apac.amazon.nova-lite-v1:0",
+      "served_in": "ap-northeast-1",
+      "calls": 2
+    },
+    {
+      "profile": "global.amazon.nova-2-lite-v1:0",
+      "served_in": "us-west-2",
+      "calls": 2
+    },
+    {
+      "profile": "global.anthropic.claude-sonnet-4-6",
+      "served_in": "ap-southeast-2",
+      "calls": 2
+    },
+    {
+      "profile": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "served_in": "ap-southeast-4",
+      "calls": 2
+    }
+  ],
+  "in_region_on_demand": [],
+  "profile_only": [
+    "anthropic.claude-opus-5",
+    "openai.gpt-6-astra",
+    "openai.gpt-5.6-terra",
+    "anthropic.claude-opus-4-8",
+    "anthropic.claude-opus-4-7",
+    "anthropic.claude-haiku-4-5-20251001-v1:0",
+    "anthropic.claude-opus-5-5",
+    "openai.gpt-6-sol",
+    "anthropic.claude-sonnet-4-5-20250929-v1:0",
+    "openai.gpt-6-luna",
+    "moonshotai.kimi-k3",
+    "anthropic.claude-fable-5",
+    "anthropic.claude-fable-5-1",
+    "openai.gpt-5.6-luna",
+    "anthropic.claude-sonnet-5-5",
+    "anthropic.claude-sonnet-5",
+    "anthropic.claude-sonnet-4-6",
+    "xai.grok-4.7",
+    "xai.grok-4.6",
+    "amazon.nova-2-lite-v1:0",
+    "twelvelabs.pegasus-1-2-v1:0",
+    "openai.gpt-5.6-sol",
+    "openai.gpt-5.4",
+    "anthropic.claude-opus-4-5-20251101-v1:0",
+    "openai.gpt-5.5",
+    "openai.gpt-6.1-sol",
+    "anthropic.claude-opus-4-6-v1",
+    "amazon.nova-pro-v1:0",
+    "amazon.nova-lite-v1:0",
+    "amazon.nova-micro-v1:0",
+    "anthropic.claude-sonnet-4-20250514-v1:0"
+  ]
+}

@@ -1,0 +1,158 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >-
+  bedrock-fundamentals stage runner - a small EC2 instance inside AWS to run the five experiments
+  from, reached with Session Manager (no inbound ports, no keys, no credentials on the laptop).
+  Self-contained: own VPC, public subnet, instance role, and an S3 bucket to push the scripts to.
+
+Parameters:
+  InstanceType:
+    Type: String
+    Default: t4g.small
+    Description: Graviton is fine; the experiments are network-bound, not CPU-bound.
+  AmiId:
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Default: /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-arm64
+    Description: Amazon Linux 2023 arm64 (change to x86_64 if you change InstanceType).
+
+Resources:
+  # --- network: one public subnet, outbound only -------------------------------------------
+  Vpc:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.99.0.0/24
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags: [{ Key: Name, Value: bedrock-fundamentals-stage }]
+  Igw:
+    Type: AWS::EC2::InternetGateway
+  IgwAttach:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties: { VpcId: !Ref Vpc, InternetGatewayId: !Ref Igw }
+  Subnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref Vpc
+      CidrBlock: 10.99.0.0/26
+      MapPublicIpOnLaunch: true
+      AvailabilityZone: !Select [0, !GetAZs ""]
+      Tags: [{ Key: Name, Value: bedrock-fundamentals-stage }]
+  RouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties: { VpcId: !Ref Vpc }
+  DefaultRoute:
+    Type: AWS::EC2::Route
+    DependsOn: IgwAttach
+    Properties: { RouteTableId: !Ref RouteTable, DestinationCidrBlock: 0.0.0.0/0, GatewayId: !Ref Igw }
+  SubnetRoute:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties: { SubnetId: !Ref Subnet, RouteTableId: !Ref RouteTable }
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: bedrock-fundamentals stage runner - no inbound, Session Manager only
+      VpcId: !Ref Vpc
+      SecurityGroupEgress:
+        - { IpProtocol: tcp, FromPort: 443, ToPort: 443, CidrIp: 0.0.0.0/0, Description: HTTPS to AWS APIs and package repos }
+        - { IpProtocol: tcp, FromPort: 80, ToPort: 80, CidrIp: 0.0.0.0/0, Description: HTTP for dnf mirrors }
+
+  # --- scripts bucket: push from the laptop, pull on the instance ---------------------------
+  ScriptsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub bedrock-fundamentals-stage-${AWS::AccountId}-${AWS::Region}
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      LifecycleConfiguration:
+        Rules: [{ Id: expire, Status: Enabled, ExpirationInDays: 30 }]
+
+  # --- instance role: exactly what the five scripts need ------------------------------------
+  Role:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement: [{ Effect: Allow, Principal: { Service: ec2.amazonaws.com }, Action: sts:AssumeRole }]
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+      Policies:
+        - PolicyName: bedrock-fundamentals-experiments
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: Invoke
+                Effect: Allow
+                Action: [bedrock:InvokeModel, bedrock:InvokeModelWithResponseStream, bedrock:CountTokens]
+                Resource: "*"
+              - Sid: Discover
+                Effect: Allow
+                Action: [bedrock:ListFoundationModels, bedrock:ListInferenceProfiles, bedrock:GetInferenceProfile,
+                         bedrock:GetFoundationModel]
+                Resource: "*"
+              - Sid: Evidence
+                Effect: Allow
+                Action: [cloudtrail:LookupEvents, servicequotas:ListServiceQuotas, servicequotas:GetServiceQuota,
+                         cloudwatch:GetMetricStatistics]
+                Resource: "*"
+              - Sid: ConversationTable
+                Effect: Allow
+                Action: [dynamodb:CreateTable, dynamodb:DescribeTable, dynamodb:DeleteTable, dynamodb:UpdateTimeToLive,
+                         dynamodb:Query, dynamodb:PutItem]
+                Resource: !Sub arn:aws:dynamodb:*:${AWS::AccountId}:table/bedrock-fundamentals-conversations
+              - Sid: Scripts
+                Effect: Allow
+                Action: [s3:ListBucket, s3:GetObject]
+                Resource: [!GetAtt ScriptsBucket.Arn, !Sub "${ScriptsBucket.Arn}/*"]
+              - Sid: MeasurementsBack
+                Effect: Allow
+                Action: [s3:PutObject]
+                Resource: !Sub "${ScriptsBucket.Arn}/measurements-from-runner/*"
+  InstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties: { Roles: [!Ref Role] }
+
+  # --- the runner ----------------------------------------------------------------------------
+  Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref AmiId
+      InstanceType: !Ref InstanceType
+      SubnetId: !Ref Subnet
+      SecurityGroupIds: [!Ref SecurityGroup]
+      IamInstanceProfile: !Ref InstanceProfile
+      Tags: [{ Key: Name, Value: bedrock-fundamentals-stage }]
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          set -eux
+          dnf install -y python3.11 python3.11-pip git tmux
+          cat > /usr/local/bin/pull-scripts <<'SH'
+          #!/bin/bash
+          # Pull the latest scripts from the stage bucket into ~ec2-user/bedrock-fundamentals.
+          set -e
+          D=/home/ec2-user/bedrock-fundamentals
+          mkdir -p "$D"
+          aws s3 sync "s3://${ScriptsBucket}/bedrock-fundamentals/" "$D" --exclude ".venv/*" --exclude "__pycache__/*" --exclude ".git/*"
+          [ -x "$D/.venv/bin/python" ] || python3.11 -m venv "$D/.venv"
+          "$D/.venv/bin/pip" install -q -r "$D/requirements.txt"
+          chown -R ec2-user:ec2-user "$D"
+          echo "scripts ready in $D"
+          SH
+          chmod +x /usr/local/bin/pull-scripts
+          cat >> /home/ec2-user/.bashrc <<'RC'
+          export AWS_REGION=${AWS::Region}
+          cd ~/bedrock-fundamentals 2>/dev/null && source .venv/bin/activate 2>/dev/null || true
+          alias run='python3'
+          RC
+          pull-scripts || true
+
+Outputs:
+  InstanceId:
+    Value: !Ref Instance
+  Bucket:
+    Value: !Ref ScriptsBucket
+  Connect:
+    Description: One line to get a terminal on the runner (needs the Session Manager plugin)
+    Value: !Sub aws ssm start-session --region ${AWS::Region} --target ${Instance}

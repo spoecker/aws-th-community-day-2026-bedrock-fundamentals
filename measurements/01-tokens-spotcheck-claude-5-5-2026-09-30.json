@@ -1,0 +1,42 @@
+{
+  "experiment": "01-tokens spot check for Claude Sonnet 5.5 and Opus 5.5",
+  "measured": "2026-09-30",
+  "how": "one Converse call per model and text with maxTokens=1 from ap-southeast-1 (Singapore), usage.inputTokens read from the response; same texts as 01_tokens.py; not part of the script's model list, recorded by hand (Opus 5.5 first appears in the 25 Sep model list, Sonnet 5.5 in the 29 Sep one)",
+  "region": "ap-southeast-1",
+  "texts": {
+    "hi": "Hi",
+    "en": "Hello, I would like to change my flight to next Tuesday morning. Is there a fee for that?",
+    "th": "สวัสดีครับ ผมต้องการเปลี่ยนเที่ยวบินเป็นเช้าวันอังคารหน้า มีค่าธรรมเนียมสำหรับการเปลี่ยนไหมครับ"
+  },
+  "models": {
+    "Claude Sonnet 5.5": {
+      "model_id": "global.anthropic.claude-sonnet-5-5",
+      "input_tokens": {
+        "hi": 11,
+        "en": 39,
+        "th": 91
+      }
+    },
+    "Claude Opus 5.5": {
+      "model_id": "global.anthropic.claude-opus-5-5",
+      "input_tokens": {
+        "hi": 11,
+        "en": 39,
+        "th": 91
+      }
+    }
+  },
+  "for_comparison_same_day_scripts": {
+    "Claude Sonnet 5 (01-tokens-2026-09-25.json)": {
+      "hi": 9,
+      "en": 37,
+      "th": 89
+    },
+    "Claude Haiku 4.5 (01-tokens-2026-09-25.json)": {
+      "hi": 8,
+      "en": 28,
+      "th": 90
+    }
+  },
+  "observation": "every count is exactly 2 higher than Sonnet 5 / Opus 5 for all three texts, which looks like two more fixed framing tokens rather than a different tokenizer; Thai / English = 91 / 39 = 2.33x. An inference, not a documented fact."
+}

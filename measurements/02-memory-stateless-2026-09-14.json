@@ -1,0 +1,18 @@
+{
+  "region": "ap-southeast-1",
+  "model": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
+  "turns": [
+    {
+      "messages_sent": 1,
+      "input_tokens": 48,
+      "user": "Hi, my name is Alex. I am booked on the 07:10 flight to Chiang Mai next Tuesday.",
+      "model": "Hello Alex! I'd be happy to help—what can I assist you with regarding your flight to Chiang Mai next Tuesday?"
+    },
+    {
+      "messages_sent": 1,
+      "input_tokens": 31,
+      "user": "What day am I flying, and where to?",
+      "model": "I don't have access to your booking information—please provide your confirmation number or booking details so I can help you verify your flight date and destination."
+    }
+  ]
+}
