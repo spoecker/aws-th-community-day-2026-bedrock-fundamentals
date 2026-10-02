@@ -75,8 +75,12 @@ def ensure_table(ddb):
 def load_history(ddb, user_id):
     """Call 1 of 3: Query this user's turns, oldest first. Nobody else's.
     One page is enough for a demo; a real application bounds the history and paginates."""
+    # ConsistentRead: a Query is eventually consistent by default, and this one runs milliseconds after the
+    # previous turn was written. Without it, 3 of 12 runs (2026-10-02, same Region as the table) missed the
+    # last turn and sent 2 messages instead of 3.
     items = ddb.query(TableName=TABLE, KeyConditionExpression="userId = :u",
-                      ExpressionAttributeValues={":u": {"S": user_id}}, ScanIndexForward=True)["Items"]
+                      ExpressionAttributeValues={":u": {"S": user_id}}, ScanIndexForward=True,
+                      ConsistentRead=True)["Items"]
     return [{"role": i["role"]["S"], "content": [{"text": i["text"]["S"]}]} for i in items]
 
 

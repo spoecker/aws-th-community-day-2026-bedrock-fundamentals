@@ -5,6 +5,9 @@ Measured Live"** (AWS Community Day Thailand 2026). Five small experiments, plai
 framework. Each prints the raw evidence (the `usage` block, CloudTrail fields, Service Quotas values)
 and saves a dated JSON file under `measurements/` so every number in the talk is reproducible.
 
+The write-up, with every number dated and every rule linked to its source:
+**[Before You Build an Agent: Five Amazon Bedrock Fundamentals, Measured](https://dev.to/spoecker/before-you-build-an-agent-five-amazon-bedrock-fundamentals-measured-5goj)** (dev.to).
+
 | # | Script | The fundamental | What you will see |
 |---|---|---|---|
 | 1 | `01_tokens.py` | Tokens are not words | the same sentence in EN/DE/ZH/TH on four models; Thai ≈ 2.4× to 3.6× English depending on the tokenizer, 1.2× on Nova 2 Lite; per-call overhead; CountTokens vs what is billed |
